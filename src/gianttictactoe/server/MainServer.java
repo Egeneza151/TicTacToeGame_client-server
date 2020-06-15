@@ -5,7 +5,7 @@
  */
 package gianttictactoe.server;
 
-import static gianttictactoe.server.MainServer.frame;
+//import static gianttictactoe.server.MainServer.frame;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.io.File;
