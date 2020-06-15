@@ -78,20 +78,24 @@ public class MainServer
 			logger = new PrintWriter(new FileOutputStream(logFile));
 			updateGameDisplay();
 			ErrorCode status = ErrorCode.NO_ERROR;
+			clients[0].sendMessage(clients[0].composeInfoMessage(board));
+			clients[1].sendMessage(clients[1].composeInfoMessage(board));
 			while(true)
 			{
 				while(true)
 				{
 					status = moveRoutine(clients[0]);
+					System.out.print("\r\n====================\r\n"+status+"\r\n====================");
 					if(status == ErrorCode.NO_ERROR) break;
-					else clients[0].sendMessage(clients[0].composeErrorMessage(status));					
+					else clients[0].sendMessage(clients[0].composeErrorMessage(status));
 				}
 				if(winner != null) break;
 				while(true)
 				{
-					status = moveRoutine(clients[1]);
+					status = moveRoutine(clients[0]);
+					System.out.print("\r\n====================\r\n"+status+"\r\n====================");
 					if(status == ErrorCode.NO_ERROR) break;
-					else clients[1].sendMessage(clients[1].composeErrorMessage(status));
+					else clients[0].sendMessage(clients[0].composeErrorMessage(status));
 				}
 				if(winner != null) break;
 			}
@@ -127,16 +131,19 @@ public class MainServer
 	
 	private static ErrorCode moveRoutine(ClientInterface client) throws SocketException
 	{
+		System.out.print("Turn: ");
+		System.out.print(client.clientID + "\r\n");
 		ErrorCode ret = ErrorCode.UNKNOWN_ERROR;
 		try
 		{
 			byte[] message;
-			byte[] buffer;
+			byte[] buffer = null;
 			System.out.println("It's Client " + (client.clientID + 1) + "'s turn");
 			infoPanel.setStateMessage("It's Client " + (client.clientID + 1) + "'s turn");
 			message = client.composeInfoMessage(board);
 			client.sendMessage(message);
 			buffer = client.getMessage();
+			System.out.println(buffer);
 			ret = client.interpretMoveMessage(buffer, board);
 			if(ret == ErrorCode.NO_ERROR) updateGameDisplay();
 			System.out.println("Client " + client.clientID + " made a move");
@@ -144,11 +151,13 @@ public class MainServer
 		catch(SocketException e)
 		{
 			System.out.println("Client " + client.clientID + " disconnected.");
+			
 			throw e;
 		}
 		catch(Exception e)
 		{
 			System.out.println("An Exception occurred O_o");
+			System.out.println(e.getClass());
 			e.printStackTrace();
 		}
 		return ret;

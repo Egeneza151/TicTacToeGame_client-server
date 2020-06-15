@@ -27,7 +27,7 @@ public class MainClient
 		System.out.println("Testing Client running");
 		
 		frame = new JFrame();
-		frame.setSize(900, 900);
+		frame.setSize(400, 400);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.add(new GamePanel());
 		frame.setVisible(true);

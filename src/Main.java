@@ -60,7 +60,7 @@ public class Main {
 		f.add(buttonServer);
 		f.add(buttonClient);
 		f.add(buttonAI);
-		f.setSize(400, 400);
+		f.setSize(300, 300);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setLayout(null);
 		f.setVisible(true);
