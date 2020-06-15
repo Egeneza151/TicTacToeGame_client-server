@@ -22,7 +22,7 @@ public class MainClient
 	
 	public static final int PORT = 3141;
 	
-	public static void main(String[] args)
+	public MainClient()
 	{
 		System.out.println("Testing Client running");
 		

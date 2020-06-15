@@ -6,7 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 
 
-import gianttictactoe.server.*;
+import gianttictactoe.server.MainServer;
+import gianttictactoe.testClient.MainClient;
+import gianttictactoe.garbageAI.MainAI;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -19,18 +21,28 @@ import gianttictactoe.server.*;
  */
 public class Main {
     public static void main(String[] args) { 
-    MainServer mainServer = new MainServer();
-    
-    JFrame f=new JFrame("Button Example");  
-    final JTextField tf=new JTextField();  
-    tf.setBounds(50,50, 150,20);  
-    JButton b=new JButton("Click Here");  
-    b.setBounds(50,100,95,30);  
-    b.addActionListener((ActionEvent e) -> {
-       
-    });  
-    f.add(b);f.add(tf);  
-    f.setSize(400,400);  
+        
+    JFrame f=new JFrame("giantTicTacToe");    
+    JButton buttonServer=new JButton("Run server");
+    JButton buttonClient=new JButton("Run client");
+    JButton buttonAI=new JButton("Run AI");
+    buttonServer.setBounds(50,100,150,30);  
+    buttonServer.addActionListener((ActionEvent e) -> {
+        MainServer mainServer = new MainServer(); 
+    });
+    buttonClient.setBounds(50,150,150,30);
+    buttonServer.addActionListener((ActionEvent e) -> {
+        MainClient mainClient = new MainClient();
+    });
+    buttonAI.setBounds(50,200,150,30); 
+    buttonServer.addActionListener((ActionEvent e) -> {
+        MainAI mainAI = new MainAI();
+    });
+    f.add(buttonServer);
+    f.add(buttonClient);
+    f.add(buttonAI); 
+    f.setSize(400,400);
+    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     f.setLayout(null);  
     f.setVisible(true);   
 } 

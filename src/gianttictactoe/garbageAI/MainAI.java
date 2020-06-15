@@ -20,7 +20,7 @@ public class MainAI
 	
 	public static final int PORT = 3141;
 	
-	public static void main(String[] args)
+	public MainAI()
 	{
 		System.out.println("Garbage AI (GAI) running");
 		

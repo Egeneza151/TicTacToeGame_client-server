@@ -5,6 +5,7 @@
  */
 package gianttictactoe.server;
 
+import static gianttictactoe.server.MainServer.frame;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.io.File;
@@ -21,7 +22,7 @@ import gianttictactoe.util.ErrorCode;
 
 public class MainServer
 {
-	private static ClientInterface[] clients = new ClientInterface[2];
+	private static final ClientInterface[] clients = new ClientInterface[2];
 	public static PlayingBoard board = new PlayingBoard();
 	public static CellState winner = null;
 	public static JFrame frame;
@@ -34,8 +35,9 @@ public class MainServer
 	
 	public static final int PORT = 3141;
 	
-	public static void main(String[] args)
+	public MainServer()
 	{
+                
 		frame = new JFrame("Ultimate Tic Tac Toe Server");
 		frame.setSize(450, 550);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
