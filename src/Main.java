@@ -14,14 +14,14 @@ import gianttictactoe.garbageAI.MainAI;
  * @author HP
  */
 public class Main {
+	public static int counter = 0;
+
 	public static void main(String[] args) {
 
 		JFrame f = new JFrame("giantTicTacToe");
 		JButton buttonServer = new JButton("Run server");
 		JButton buttonClient = new JButton("Run client");
 		JButton buttonAI = new JButton("Run AI");
-		Thread thr[] = new Thread[2];
-		int counter = 0;
 
 		buttonServer.setBounds(50, 100, 150, 30);
 		buttonServer.addActionListener(new ActionListener() {
@@ -33,7 +33,7 @@ public class Main {
 					mainServer = new MainServer();
 				});
 				t.start();
-				
+
 			}
 		});
 
@@ -41,14 +41,29 @@ public class Main {
 		buttonClient.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				Thread t = new Thread(() -> {
-					MainClient mainClient;
-					mainClient = new MainClient();
-				});
-				thr[counter] = t;
-				thr[counter].start();
-				
+				if (counter == 0) {
+					Thread t = new Thread(() -> {
+
+						System.out.println("0");
+						MainClient mainClient;
+						mainClient = new MainClient();
+						System.out.println(counter);
+					});
+					t.start();
+				} else {
+					Thread tt = new Thread(() -> {
+
+						System.out.println("0");
+						MainClient mainClient;
+						mainClient = new MainClient();
+						System.out.println(counter);
+					});
+					tt.start();
+
+				}
+
 				counter++;
+
 			}
 		});
 
