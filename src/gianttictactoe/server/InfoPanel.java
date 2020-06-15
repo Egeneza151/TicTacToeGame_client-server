@@ -49,14 +49,14 @@ public class InfoPanel extends JPanel
 	
 	public void update()
 	{
-		labelMoveIndex.setText("Move #" + Main.currentState);
-		Main.frame.repaint();
+		labelMoveIndex.setText("Move #" + MainServer.currentState);
+		MainServer.frame.repaint();
 	}
 	
 	public void setStateMessage(String message)
 	{
 		labelCurrentState.setText("Status: " + message);
-		Main.frame.repaint();
+		MainServer.frame.repaint();
 	}
 	
 	private class ButtonListener implements ActionListener
@@ -71,13 +71,13 @@ public class InfoPanel extends JPanel
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			int newIndex = Main.currentState + offset;
-			if(offset >= 1000) newIndex = Main.gameStates.size() - 1;
+			int newIndex = MainServer.currentState + offset;
+			if(offset >= 1000) newIndex = MainServer.gameStates.size() - 1;
 			if(offset <= -1000) newIndex = 0;
-			if(newIndex >= 0 && newIndex < Main.gameStates.size()) 
+			if(newIndex >= 0 && newIndex < MainServer.gameStates.size()) 
 			{
-				Main.currentState = newIndex;
-				Main.gamePanel.state = Main.gameStates.get(newIndex);
+				MainServer.currentState = newIndex;
+				MainServer.gamePanel.state = MainServer.gameStates.get(newIndex);
 				update();
 			}
 		}

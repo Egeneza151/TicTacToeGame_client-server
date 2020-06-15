@@ -83,7 +83,7 @@ public class ClientInterface
 		int x = message[i++], y = message[i++];
 		ErrorCode status = board.setCell(x, y, symbol);
 		if(status != ErrorCode.NO_ERROR) return status;
-		Main.winner = board.isWon();
+		MainServer.winner = board.isWon();
 		return status;
 	}
 	
@@ -92,7 +92,7 @@ public class ClientInterface
 		byte[] message = new byte[4];
 		int i = 0;
 		message[i++] = 'W'; message[i++] = SEPARATOR;
-		byte winnerId = Main.board.getByte(winner);
+		byte winnerId = MainServer.board.getByte(winner);
 		message[i++] = winnerId; message[i++] = SEPARATOR;
 		return message;
 	}
