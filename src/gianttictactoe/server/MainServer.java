@@ -40,7 +40,7 @@ public class MainServer
                 
 		frame = new JFrame("Ultimate Tic Tac Toe Server");
 		frame.setSize(450, 550);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setLayout(null);
 		gamePanel = new ServerGamePanel();
 		frame.add(gamePanel);

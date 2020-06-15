@@ -28,7 +28,7 @@ public class MainClient
 		
 		frame = new JFrame();
 		frame.setSize(900, 900);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.add(new GamePanel());
 		frame.setVisible(true);
 			

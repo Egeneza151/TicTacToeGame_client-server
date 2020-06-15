@@ -23,33 +23,38 @@ public class Main {
 
 		buttonServer.setBounds(50, 100, 150, 30);
 		buttonServer.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Thread t = new Thread(()->{
-				MainServer mainServer;
-				mainServer = new MainServer();
-			});t.start();
-				}
+				Thread t = new Thread(() -> {
+					MainServer mainServer;
+					mainServer = new MainServer();
+				});
+				t.start();
+			}
 		});
 
 		buttonClient.setBounds(50, 150, 150, 30);
 		buttonClient.addActionListener(new ActionListener() {
-			
+
 			public void actionPerformed(ActionEvent e) {
-				Thread t = new Thread(()->{
-				MainClient mainClient;
-				mainClient = new MainClient();
-			});t.start();}
+				Thread t = new Thread(() -> {
+					MainClient mainClient;
+					mainClient = new MainClient();
+				});
+				t.start();
+			}
 		});
 
 		buttonAI.setBounds(50, 200, 150, 30);
 		buttonAI.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Thread t = new Thread(()->{
-				MainAI mainAI;
-				mainAI = new MainAI();
-			});t.start();}
+				Thread t = new Thread(() -> {
+					MainAI mainAI;
+					mainAI = new MainAI();
+				});
+				t.start();
+			}
 		});
 
 		f.add(buttonServer);
