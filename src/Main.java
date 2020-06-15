@@ -20,6 +20,8 @@ public class Main {
 		JButton buttonServer = new JButton("Run server");
 		JButton buttonClient = new JButton("Run client");
 		JButton buttonAI = new JButton("Run AI");
+		Thread thr[] = new Thread[2];
+		int counter = 0;
 
 		buttonServer.setBounds(50, 100, 150, 30);
 		buttonServer.addActionListener(new ActionListener() {
@@ -31,6 +33,7 @@ public class Main {
 					mainServer = new MainServer();
 				});
 				t.start();
+				
 			}
 		});
 
@@ -42,7 +45,10 @@ public class Main {
 					MainClient mainClient;
 					mainClient = new MainClient();
 				});
-				t.start();
+				thr[counter] = t;
+				thr[counter].start();
+				
+				counter++;
 			}
 		});
 

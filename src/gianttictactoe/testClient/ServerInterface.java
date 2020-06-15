@@ -86,9 +86,12 @@ public class ServerInterface
 		System.out.println((byte)x + "," + (byte)y + " as byte");
 		byte[] message = new byte[6];
 		message[0] = 'M'; message[1] = 'A';
+		System.out.println(new String(message) + " message");
 		message[2] = (byte)x; message[3] = (byte)y;
+		System.out.println(new String(message) + " message");
 		message[4] = '\r'; message[5] = '\n';
 		System.out.println(message + " message");
+		System.out.println(new String(message) + " message");
 		char[] chars = new String(message).toCharArray();
 		System.out.println(chars);
 		out.write(chars);
